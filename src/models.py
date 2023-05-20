@@ -51,6 +51,15 @@ class Comment(Base):
     post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
     post = relationship(Post)
 
+class Follower(Base):
+    __tablename__ = 'follower'
+
+    id = Column(Integer, primary_key=True)
+    user_id_follower = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user_of_follower = relationship(User)
+    user_id_followed = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user_of_followed = relationship(User)
+
 
 
 # class Address(Base):
